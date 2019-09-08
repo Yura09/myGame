@@ -1,13 +1,23 @@
-package com.epam.myGame.weapon;
+package com.epam.myGame.model.weapon;
 
-import com.epam.myGame.Damage;
+import com.epam.myGame.model.features.Damage;
 
+/**
+ * The type Sword.
+ */
 public class Sword extends Weapon {
-    public double getDamage() {
+    @Override
+    final public int getDamage() {
         return Damage.DAMAGE_SWORD;
     }
 
-    public double getFatalDamage() {
+    @Override
+    final public int getFatalDamage() {
         return Damage.FATAL_DAMAGE_SWORD;
+    }
+
+    @Override
+    final public double getChanceOfFatalDamage() {
+        return Damage.CHANCE_FATAL_SWORD;
     }
 }

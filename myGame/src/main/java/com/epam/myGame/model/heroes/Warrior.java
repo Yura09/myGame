@@ -1,34 +1,36 @@
-package com.epam.myGame.heroes;
+package com.epam.myGame.model.heroes;
 
-import com.epam.myGame.weapon.Sword;
+import com.epam.myGame.model.features.WeaponName;
+import com.epam.myGame.model.heroes.abstractHero.Hero;
 
+import com.epam.myGame.model.weapon.Sword;
+
+/**
+ * The type Warrior.
+ */
 public class Warrior extends Hero {
-    public Warrior(int health, int mana) {
-        super(health, mana);
-        weapon = new Sword();
-        chanceOfFatalDamage = Hero.CHANCE_FATAL;
-    }
+    private String nameOfWeapon;
 
+    /**
+     * Instantiates a new Warrior.
+     */
     public Warrior() {
         super();
-        weapon = new Sword();
-        chanceOfFatalDamage = CHANCE_FATAL;
+        setWeapon(new Sword());
+        setChanceOfFatalDamage(getWeapon().getChanceOfFatalDamage());
+        nameOfWeapon = new Sword().getName(WeaponName.SWORD);
     }
 
-    public double attack(Hero hero) {
+    public String getNameOfWeapon() {
+        return nameOfWeapon;
+    }
 
-      double damage=attackDamage();
-        hero.health -= damage;
-
-//        if (isDead()) {
-//            System.out.println(hero + " is dead");
-//            return;
-//        }
-        //System.out.println("Warrior attacked for+ " + damage + " " + hero + "(" + hero.health + "hp)");
+    public int attack(Hero hero) {
+        int damage = attackDamage();
+        hero.setHealth(hero.getHealth() - damage);
         return damage;
     }
 
-    //public fatalDamage()
     public void heal() {
         int healHp = healHp();
         System.out.println("Warrior heald to " + healHp + "hp");
@@ -37,7 +39,6 @@ public class Warrior extends Hero {
     public void resistWeapon() {
 
     }
-
     @Override
     public String toString() {
         return "Warrior";

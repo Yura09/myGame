@@ -1,45 +1,41 @@
-package com.epam.myGame.heroes;
+package com.epam.myGame.model.heroes;
 
-import com.epam.myGame.Heal;
-import com.epam.myGame.weapon.Bow;
+import com.epam.myGame.model.features.WeaponName;
+import com.epam.myGame.model.heroes.abstractHero.Hero;
+import com.epam.myGame.model.weapon.Bow;
 
-import java.util.Random;
 
+/**
+ * The type Archer.
+ */
 public class Archer extends Hero {
+    private String nameOfWeapon;
 
-    public Archer(int health, int mana) {
-        super(health, mana);
-        weapon = new Bow();
-        chanceOfFatalDamage = Hero.CHANCE_FATAL;
-    }
-
+    /**
+     * Instantiates a new Archer.
+     */
     public Archer() {
         super();
-        weapon = new Bow();
-        chanceOfFatalDamage = CHANCE_FATAL;
+        setWeapon(new Bow());
+        setChanceOfFatalDamage(getWeapon().getChanceOfFatalDamage());
+        nameOfWeapon = new Bow().getName(WeaponName.BOW);
     }
-
-    public double attack(Hero hero) {
-
-        double damage=attackDamage();
-        hero.health -= damage;
-
+    public int attack(Hero hero) {
+        int damage = attackDamage();
+        hero.setHealth(hero.getHealth() - damage);
         // System.out.println("Archer attacked for+ " + damage + " " + hero + "(" + hero.health + "hp)");
         return damage;
+    }
+    public String getNameOfWeapon() {
+        return nameOfWeapon;
     }
 
     public void heal() {
         int healHp = healHp();
-//        Random random = new Random();
-//        int healHp = random.nextInt(Heal.MAX_HEAL - Heal.MIN_HEAL) + MIN_HEAL;
-//        this.health += healHp;
         System.out.println("Archer heald for " + healHp + "HP");
     }
-
     public void resistWeapon() {
-
     }
-
     @Override
     public String toString() {
         return "Archer";

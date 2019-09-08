@@ -1,37 +1,47 @@
-package com.epam.myGame.heroes;
+package com.epam.myGame.model.heroes;
 
-import com.epam.myGame.weapon.Staff;
+import com.epam.myGame.model.features.WeaponName;
+import com.epam.myGame.model.heroes.abstractHero.Hero;
+import com.epam.myGame.model.weapon.Staff;
 
-import java.util.Random;
-
+/**
+ * The type Wizard.
+ */
 public class Wizard extends Hero {
-    public Wizard(int health, int mana) {
-        super(health, mana);
-        weapon = new Staff();
-        chanceOfFatalDamage = Hero.CHANCE_FATAL;
-    }
+    private String nameOfWeapon;
 
+    /**
+     * Instantiates a new Wizard.
+     */
     public Wizard() {
         super();
-        weapon = new Staff();
-        chanceOfFatalDamage = CHANCE_FATAL;
+        setWeapon(new Staff());
+        setChanceOfFatalDamage(getWeapon().getChanceOfFatalDamage());
+        nameOfWeapon = new Staff().getName(WeaponName.STAFF);
     }
 
-    public double attack(Hero hero) {
-
-       double damage=attackDamage();
-        hero.health -= damage;
-       // System.out.println("Wizard attacked for+ " + damage + " " + hero + "(" + hero.health + "hp)");
+    @Override
+    public int attack(Hero hero) {
+        int damage = attackDamage();
+        hero.setHealth(hero.getHealth() - damage);
+        // System.out.println("Wizard attacked for+ " + damage + " " + hero + "(" + hero.health + "hp)");
         return damage;
     }
 
+    @Override
     public void heal() {
         int healHp = healHp();
         System.out.println("Wizard heald to " + healHp + "hp");
     }
 
+    @Override
     public void resistWeapon() {
 
+    }
+
+    @Override
+    public String getNameOfWeapon() {
+        return nameOfWeapon;
     }
 
     @Override

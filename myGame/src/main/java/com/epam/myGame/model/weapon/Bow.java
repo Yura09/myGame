@@ -1,14 +1,26 @@
-package com.epam.myGame.weapon;
+package com.epam.myGame.model.weapon;
 
-import com.epam.myGame.Damage;
+import com.epam.myGame.model.features.Damage;
+import com.epam.myGame.model.features.WeaponName;
 
+/**
+ * The type Bow.
+ */
 public class Bow extends Weapon {
-
-    public double getDamage() {
+    @Override
+    final public int getDamage() {
         return Damage.DAMAGE_BOW;
     }
 
-    public double getFatalDamage() {
+    @Override
+    final public int getFatalDamage() {
         return Damage.FATAL_DAMAGE_BOW;
     }
+
+    @Override
+    final public double getChanceOfFatalDamage() {
+        return Damage.CHANCE_FATAL_BOW;
+    }
+
+
 }

@@ -1,9 +1,15 @@
+package com.epam.myGame;
+
+import com.epam.myGame.view.View;
+
+/**
+ * The type Main.
+ */
 public class Main {
+    /**
+     * The entry point of application.
+     */
     public static void main(String[] args) {
-        Hero hero=new Archer(100,100);
-        Hero hero1=new Warrior(90,90);
-        hero.attack(hero1);
-        hero1.heal();
-        System.out.println(hero1.health);
+        new View().show();
     }
 }

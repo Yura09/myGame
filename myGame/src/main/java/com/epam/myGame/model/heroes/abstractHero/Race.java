@@ -1,13 +1,24 @@
-package com.epam.myGame.model.heroes;
+package com.epam.myGame.model.heroes.abstractHero;
 
-import com.epam.myGame.model.heroes.Hero;
-
+/**
+ * The interface Race.
+ */
 public interface Race {
-    double attack(Hero hero);
+    /**
+     * Attack int.
+     *
+     * @param hero the hero
+     * @return the int
+     */
+    int attack(Hero hero);
 
+    /**
+     * Heal.
+     */
     void heal();
 
+    /**
+     * Resist weapon.
+     */
     void resistWeapon();
-
-    double CHANCE_FATAL = 0.4D;
 }
